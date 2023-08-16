@@ -26,9 +26,10 @@ class Product(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование')
     overview = models.TextField(max_length=255, verbose_name='Описание')
+    created_at = models.DateTimeField
 
     def __str__(self):
-        return f'{self.name} {self.overview}'
+        return f'{self.name} {self.overview} {self.created_at}'
 
     class Meta:
         verbose_name = 'Категория'
