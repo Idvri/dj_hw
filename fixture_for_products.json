@@ -1,0 +1,53 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Orange",
+      "overview": "",
+      "preview": "",
+      "category": "Fruits",
+      "price": 25,
+      "date_of_creation": "2023-08-17T13:47:17Z",
+      "last_update": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Apple",
+      "overview": "",
+      "preview": "",
+      "category": "Fruits",
+      "price": 20,
+      "date_of_creation": "2023-08-17T13:48:20Z",
+      "last_update": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Banana",
+      "overview": "",
+      "preview": "",
+      "category": "Fruits",
+      "price": 10,
+      "date_of_creation": "2023-08-17T13:48:43Z",
+      "last_update": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Mandarin",
+      "overview": "", "preview": "",
+      "category": "Fruits",
+      "price": 10,
+      "date_of_creation": "2023-08-17T13:49:10Z",
+      "last_update": null
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Soda",
+      "overview": "Carbonated drinks"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Water",
+      "overview": "Non-Carbonated drinks"
+    }
+  }
+]
