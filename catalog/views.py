@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from catalog.models import Product
 
@@ -17,9 +18,6 @@ def contact_page(request):
     return render(request, 'main/contact_page.html')
 
 
-def products_page(request):
-    products_list = Product.objects.all()
-    context = {
-        'object_list': products_list,
-    }
-    return render(request, 'main/products_page.html', context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'main/product_list.html'
