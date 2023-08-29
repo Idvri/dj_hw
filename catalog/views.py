@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from catalog.models import Product
 
 
 # Create your views here.
-def home_page(request):
-    return render(request, 'main/home_page.html')
+class DashboardView(TemplateView):
+    template_name = 'main/home_page.html'
 
 
 def contact_page(request):
