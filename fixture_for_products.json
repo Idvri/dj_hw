@@ -20,9 +20,7 @@
       "overview": "",
       "preview": "",
       "category": "Fruits",
-      "price": 20,
-      "date_of_creation": "2023-08-17T13:48:20Z",
-      "last_update": null
+      "price": 20
     }
   },
   {
@@ -33,9 +31,7 @@
       "overview": "",
       "preview": "",
       "category": "Fruits",
-      "price": 10,
-      "date_of_creation": "2023-08-17T13:48:43Z",
-      "last_update": null
+      "price": 10
     }
   },
   {
@@ -45,9 +41,7 @@
       "name": "Mandarin",
       "overview": "", "preview": "",
       "category": "Fruits",
-      "price": 10,
-      "date_of_creation": "2023-08-17T13:49:10Z",
-      "last_update": null
+      "price": 10
     }
   }
 ]
