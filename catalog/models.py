@@ -28,8 +28,7 @@ class Product(models.Model):
     last_update = models.DateTimeField(default=None, verbose_name='Дата последнего изменения', **NULLABLE)
 
     def __str__(self):
-        return f'{self.name} {self.overview} {self.preview} {self.category} {self.price} {self.date_of_creation} ' \
-               f'{self.last_update}'
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'Продукт'
@@ -39,3 +38,17 @@ class Product(models.Model):
         if self.pk:
             self.last_update = timezone.now()
         super(Product, self).save(*args, **kwargs)
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
+    version_number = models.IntegerField(default=0, verbose_name='Номер версии')
+    version_name = models.CharField(max_length=255, verbose_name='Название версии')
+    is_current = models.BooleanField(default=False, verbose_name='Признак активности версии')
+
+    def __str__(self):
+        return f'Номер версии: {self.version_number}; Название версии: {self.version_name}.'
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'

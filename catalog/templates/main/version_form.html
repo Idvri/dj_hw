@@ -16,10 +16,7 @@
                                 Создать
                             {% endif %}
                         </button>
-                        {% if object %}
-                            <a href="{% url 'catalog:create_ver' %}" class="btn btn-info">Указать версию</a>
-                        {% endif %}
-                        <a href="{% url 'catalog:list' %}" class="btn btn-warning">Назад</a>
+                      <a href="{% url 'catalog:list' %}" class="btn btn-info">Отмена</a>
                     </form>
                 </div>
             </div>
