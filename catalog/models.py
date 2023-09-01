@@ -25,7 +25,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     price = models.IntegerField(verbose_name='Цена за покупку')
     date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    last_update = models.DateTimeField(default=None, verbose_name='Дата последнего изменения')
+    last_update = models.DateTimeField(default=None, verbose_name='Дата последнего изменения', **NULLABLE)
 
     def __str__(self):
         return f'{self.name} {self.overview} {self.preview} {self.category} {self.price} {self.date_of_creation} ' \

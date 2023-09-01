@@ -18,7 +18,9 @@
                 <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         Дата создания: {{ object.date_of_creation }}
+                        {% if object.last_update %}
                         Дата последнего изменения: {{ object.last_update }}
+                        {% endif %}
                     </div>
                     <div class="right-button">
                         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:list' %}">Назад</a>
