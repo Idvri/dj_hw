@@ -21,7 +21,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование')
     overview = models.TextField(max_length=255, verbose_name='Описание', **NULLABLE)
-    preview = models.ImageField(upload_to='', verbose_name='Изображение', **NULLABLE)
+    preview = models.ImageField(default='placeholder.png', upload_to='', verbose_name='Изображение', **NULLABLE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     price = models.IntegerField(verbose_name='Цена за покупку')
     date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -44,10 +44,15 @@ class Version(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
     version_number = models.IntegerField(default=0, verbose_name='Номер версии')
     version_name = models.CharField(max_length=255, verbose_name='Название версии')
-    is_current = models.BooleanField(default=False, verbose_name='Признак активности версии')
+    is_current = models.BooleanField(default=True, verbose_name='Признак активности версии')
 
     def __str__(self):
         return f'Номер версии: {self.version_number}; Название версии: {self.version_name}.'
+
+    def save(self, *args, **kwargs):
+        if self.is_current:
+            Version.objects.filter(product=self.product, is_current=True).update(is_current=False)
+        super(Version, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Версия'
