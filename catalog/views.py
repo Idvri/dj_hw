@@ -1,3 +1,4 @@
+from django.db.models import OuterRef, Subquery
 from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -54,6 +55,14 @@ class ProductCreateView(CreateView):
 class ProductListView(ListView):
     model = Product
     template_name = 'main/product_list.html'
+
+    def get_queryset(self):
+        latest_versions = Version.objects.filter(product=OuterRef('pk'))
+        queryset = Product.objects.annotate(
+            latest_version_name=Subquery(latest_versions.values('version_name')[:1]),
+            latest_version_number=Subquery(latest_versions.values('version_number')[:1]),
+        )
+        return queryset
 
 
 class ProductDetailView(DetailView):

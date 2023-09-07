@@ -16,6 +16,10 @@
         <div class="card mb-4 box-shadow">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+                {% if object.latest_version_name %}
+                    <h6 class="my-0 font-weight-normal">Название версии: {{ object.latest_version_name }}</h6>
+                    <h6 class="my-0 font-weight-normal">Номер версии: {{ object.latest_version_number }}</h6>
+                {% endif %}
             </div>
             <img src="{{ object.preview|mediapath }}" />
             <div class="card-body">
