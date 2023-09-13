@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
@@ -26,6 +27,8 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name='Цена за покупку')
     date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     last_update = models.DateTimeField(default=None, verbose_name='Дата последнего изменения', **NULLABLE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
+                              verbose_name='Пользователь')
 
     def __str__(self):
         return f'{self.name}'
