@@ -13,6 +13,7 @@ from django.views.generic import CreateView, FormView
 
 from users.forms import UserRegisterForm, PasswordAltResetForm
 from users.models import User
+from users.services import send_mail_for_reset
 
 
 # Create your views here.
@@ -34,21 +35,6 @@ class ResetView(FormView):
     def get(self, request, **kwargs):
         return render(request, self.template_name, {'form': self.form_class})
 
-    @staticmethod
-    def send_mail_for_reset(request, email, new_password):
-        current_site = get_current_site(request)
-        context = {
-            'domain': current_site.domain,
-            'new_password': new_password
-        }
-        message = render_to_string('users/reset_email.html', context=context)
-        email = EmailMessage(
-            'Восстановление пароля',
-            message,
-            to=[email],
-        )
-        email.send()
-
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -58,7 +44,7 @@ class ResetView(FormView):
                 new_password = self.token_generator.make_token(user)[:10]
                 user.set_password(new_password)
                 user.save()
-                self.send_mail_for_reset(request, email, new_password)
+                send_mail_for_reset(request, email, new_password)
                 return redirect(self.success_url)
             else:
                 return render(request, 'users/email_verify_unsuccessful.html')
