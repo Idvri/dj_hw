@@ -28,7 +28,7 @@ class Product(models.Model):
     date_of_creation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     last_update = models.DateTimeField(default=None, verbose_name='Дата последнего изменения', **NULLABLE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
-                              verbose_name='Пользователь')
+                             verbose_name='Пользователь')
 
     def __str__(self):
         return f'{self.name}'
