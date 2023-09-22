@@ -1,0 +1,86 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    <div class="col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        {% if object %}
+                            <div class="card-header">Изменение продукта.</div>
+                        {% else %}
+                            <div class="card-header">Создание продукта.</div>
+                        {% endif %}
+                        <div class="card-body">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" name="save_product" class="btn btn-success">
+                                {% if object %}
+                                    Сохранить
+                                {% else %}
+                                    Создать
+                                {% endif %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {% csrf_token %}
+                    {{ latest_version.form.as_p }}
+                    {% if latest_version %}
+                    <div class="card">
+                        <div class="card-header">
+                            Актуальная версия.
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{ latest_version }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if latest_version %}
+                         {{ formset.management_form }}
+                         {% for form in formset.forms %}
+                         <div class="card mt-3">
+                             <div class="card">
+                                 <div class="card-header">Создание/изменение версии.</div>
+                                 <div class="card-body">
+                                     {% csrf_token %}
+                                     {{ form.as_p }}
+                                     <button type="submit" name="save_version" class="btn btn-success">
+                                         Подтвердить
+                                     </button>
+                                 </div>
+                             </div>
+                         </div>
+                         {% endfor %}
+                    {% else %}
+                         {{ formset.management_form }}
+                         {% for form in formset.forms %}
+                         <div class="card">
+                             <div class="card-header">Создание/изменение версии.</div>
+                                 <div class="card-body">
+                                     {% csrf_token %}
+                                     {{ form.as_p }}
+                                     <button type="submit" name="save_version" class="btn btn-success">
+                                         Подтвердить
+                                     </button>
+                                 </div>
+                             </div>
+                         </div>
+                         {% endfor %}
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="col-12 d-flex justify-content-end">
+    <a href="{% url 'catalog:list' %}" class="p-2 btn btn-warning">Назад</a>
+</div>
+
+{% endblock %}

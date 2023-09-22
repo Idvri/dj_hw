@@ -1,0 +1,82 @@
+[
+    {
+        "model": "catalog.category",
+        "pk": 1,
+        "fields": {
+            "name": "Автомобили",
+            "overview": "Марки и модели автомобилей."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 2,
+        "fields": {
+            "name": "Электроника",
+            "overview": "Гаджеты, электронные устройства и компьютеры."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 3,
+        "fields": {
+            "name": "Мебель",
+            "overview": "Мебель для дома и офиса."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 4,
+        "fields": {
+            "name": "Одежда",
+            "overview": "Одежда для мужчин, женщин и детей."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 5,
+        "fields": {
+            "name": "Косметика",
+            "overview": "Косметические продукты и средства ухода за кожей."
+        }
+    },
+  {
+        "model": "catalog.category",
+        "pk": 6,
+        "fields": {
+            "name": "Спорт",
+            "overview": "Товары и оборудование для спорта и физической активности."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 7,
+        "fields": {
+            "name": "Еда",
+            "overview": "Разнообразные продукты питания и напитки."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 8,
+        "fields": {
+            "name": "Книги",
+            "overview": "Литературные произведения различных жанров и направлений."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 9,
+        "fields": {
+            "name": "Игрушки",
+            "overview": "Развивающие и развлекательные игрушки для детей."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 10,
+        "fields": {
+            "name": "Декор",
+            "overview": "Товары для декорирования интерьера и создания уютной атмосферы."
+        }
+    }
+  ]

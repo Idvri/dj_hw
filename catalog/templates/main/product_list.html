@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load catalog_tags %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Каталог</h1>
+</div>
+
+<div class="col-12 mb-3">
+     <a class="btn btn-outline-primary col-12" href="{% url 'catalog:create' %}">Добавить продукт</a>
+</div>
+
+<div class="row text-center">
+    {% for object in object_list %}
+    <div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+                {% if object.latest_version_name %}
+                    <h6 class="my-0 font-weight-normal">Название версии: {{ object.latest_version_name }}</h6>
+                    <h6 class="my-0 font-weight-normal">Номер версии: {{ object.latest_version_number }}</h6>
+                {% endif %}
+            </div>
+            <img src="{{ object.preview|mediapath }}" />
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ object.price }} RUB.</h1>
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <li>{{ object.category }}</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-success">Купить</button>
+                <a href="{% url 'catalog:view' object.pk %}"
+                        type="button" class="btn btn-lg btn-block btn-outline-primary">Подробнее</a>
+                <a href="{% url 'catalog:update' object.pk %}"
+                        type="button" class="btn btn-lg btn-block btn-outline-info">Изменить</a>
+                <a href="{% url 'catalog:delete' object.pk %}"
+                        type="button" class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

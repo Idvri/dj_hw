@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load catalog_tags %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Статьи</h1>
+</div>
+
+<div class="col-12 mb-3">
+     <a class="btn btn-outline-primary col-12" href="{% url 'blog:create' %}">Добавить статью</a>
+</div>
+
+{% for object in object_list %}
+{% if object.is_active %}
+<div class="card mb-3">
+  <h5 class="card-header">{{ object.title }}</h5>
+  <div class="card-body">
+    {% if object.preview %}
+        <img src="{{ object.preview|mediapath }}">
+    {% endif %}
+    <p class="card-text">{{ object.overview }}</p>
+    <p class="card-text"><small class="text-muted">{{ object.date_of_creation }}</small></p>
+    <div class="btn-toolbar justify-content-between" role="toolbar">
+      <div class="btn-group">
+        <a href="{% url 'blog:view' object.pk %}"
+           type="button" class="btn btn-primary">Подробнее</a>
+        <a href="{% url 'blog:edit' object.pk %}"
+           type="button" class="btn btn-info">Изменить</a>
+      </div>
+      <div class="btn-group">
+        <a href="{% url 'blog:delete' object.pk %}"
+           type="button" class="btn btn-danger">Удалить</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

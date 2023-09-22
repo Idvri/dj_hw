@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="col-12">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Продукт: "{{ object.name }}"
+                    </h3>
+                    <h3 class="card-title">
+                        {% if object.user %}
+                            Владелец продукта: @{{ object.user }}
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        {{ object.overview }}
+                    </p>
+                </div>
+                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        Дата создания: {{ object.date_of_creation }}
+                        {% if object.last_update %}
+                        Дата последнего изменения: {{ object.last_update }}
+                        {% endif %}
+                    </div>
+                    <div class="right-button">
+                        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:list' %}">Назад</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
